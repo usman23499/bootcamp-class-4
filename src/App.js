@@ -1,23 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { Message } from "./message";
+import  "./App.css";
+// import css file
+
 
 function App() {
+ // we can now add data in function is new function bsed
+
+ let [count,setcount]=useState(0)
+
+
+let [isMorning,setMorning]=useState(true)
+
+
+// setcount(2)
+// the value is update
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={isMorning ? 'daylight' : 'box'} >
+
+      {/* use className */}
+
+      {/* <h1>Count : {count}</h1> */}
+   
+
+      <h1> DAY TIME {isMorning ? 'Morning' : 'Evening'}</h1>
+      <Message sendcount={count} />
+   
+   
+   
+   
+      <button onClick={()=>setcount(count + 1)  }>
+        {/* or ++count  */}
+        Update Counter
+      </button>
+   
+
+        {/* now make day and night light */}
+   
+      <button onClick={()=>setMorning(!isMorning)} >Change Light</button>
+   
+   
+   
+   
+   
+   
     </div>
   );
 }
